@@ -6,5 +6,7 @@ class Canvas {
 
     getCanvasConfig(){
         // TO DO -> getter zwracający this.cvs i this.ctx
+        return this;
     };
+
 }

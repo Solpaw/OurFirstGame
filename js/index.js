@@ -20,6 +20,9 @@ const start = () => {
     // TO DO -> wywołanie niezbęędnych metod obiektów, wprawienie w ruch piłeczki, czyszecznie canvas'a
     // hint: wprawienie w ruch piłeczki w ruch to dwie bardzo krótkie linie kodu, nie przekombinujcie
 
+    ctx.clearRect(0,0,cvs.width,cvs.height); // czyszczenie canvas
+    paddle.drawPaddle();    // rysowanie Paddle
+    paddle.movePaddle();    // przesunięcie Paddle
     // umieszczenie zmiennej score w spanie, w nagówku h1 o id "score", tego jeszcze nie było, więc nie musice nic tu zmieniać
     document.querySelector("#score span").innerText = score;
 };
