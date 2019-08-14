@@ -19,12 +19,19 @@ let y = cvs.height-30; // początkowa pozycja piłeczki oś y
 const start = () => {
     // TO DO -> wywołanie niezbęędnych metod obiektów, wprawienie w ruch piłeczki, czyszecznie canvas'a
     // hint: wprawienie w ruch piłeczki w ruch to dwie bardzo krótkie linie kodu, nie przekombinujcie
-
     ctx.clearRect(0,0,cvs.width,cvs.height); // czyszczenie canvas
     paddle.drawPaddle();    // rysowanie Paddle
+    ball.drawBall(x, y);    // rysowanie piłki
     paddle.movePaddle();    // przesunięcie Paddle
+    ball.bouncing(x, y, paddle); // odbicia piłki od Paddle i ścian, koniec gry
+    moveBall(); // przesuwanie piłeczki
     // umieszczenie zmiennej score w spanie, w nagówku h1 o id "score", tego jeszcze nie było, więc nie musice nic tu zmieniać
     document.querySelector("#score span").innerText = score;
+};
+
+const moveBall = () => {
+    x += dx;
+    y += dy;
 };
 
 // Poniżej są eventListenery, które wyłapują wciśnięcie i puszczenie strzełek, tego jeszcze nie mieliśice
