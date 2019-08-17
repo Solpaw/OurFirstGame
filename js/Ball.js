@@ -26,15 +26,24 @@ class Ball {
         if (ballY <= this.ballRadius){
             dy = -dy;
         }
-        // Od paletki
-        if (this.cvs.height - ballY - paddle.paddleHeight <= this.ballRadius & ballX > paddle.paddleX && ballX < paddle.paddleX + paddle.paddleWidth){
-            dy = -dy;
-        }
         // Od dolnej ściany
         else if (this.cvs.height-ballY<=this.ballRadius){
             alert(`Game over! Your score: ${score}`);
             window.clearInterval(interval);
             location.reload(true);          
+        }
+        // Od paletki
+        let paddleY = this.cvs.height-paddle.paddleHeight;
+        let distX = Math.abs(ballX - (paddle.paddleX + paddle.paddleWidth/2));
+        let distY = Math.abs(ballY - (paddleY + paddle.paddleHeight/2));
+        if (distX <= paddle.paddleWidth/2 && distY <= paddle.paddleHeight/2 + this.ballRadius){
+            dy = -dy;
+        }
+        let pitaX = distX - paddle.paddleWidth/2;
+        let pitaY = distY - paddle.paddleHeight/2;
+        if (pitaX*pitaX + pitaY*pitaY <= this.ballRadius*this.ballRadius){
+            dx = -dx;
+            dy = -dy;
         }
     };
 }
