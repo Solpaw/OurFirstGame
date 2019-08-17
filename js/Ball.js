@@ -27,7 +27,7 @@ class Ball {
             dy = -dy;
         }
         // Od dolnej ściany
-        else if (this.cvs.height-ballY<=this.ballRadius){
+        if (this.cvs.height-ballY<=this.ballRadius){
             alert(`Game over! Your score: ${score}`);
             window.clearInterval(interval);
             location.reload(true);          
