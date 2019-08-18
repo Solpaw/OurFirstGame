@@ -13,7 +13,7 @@ class Ball {
         this.ctx.stroke();
     };
 
-    bouncing(ballX, ballY, paddle){
+    bouncing(ballX, ballY, {paddleX,paddleWidth,paddleHeight}){
         // TO DO -> funcja odbijąca piłeczkę od ścian
         // hint: jako argumenty funkcja przyjmuje x i y zdefiniowane globalnie w index.js oraz pozycję i szerokość paddle
         // hint: gdy piłeczka wpadnie w dolną ścianę -> game over, czyli alert oraz przeładowanie dokumentu i wyczesczenie intarwału
@@ -33,14 +33,14 @@ class Ball {
             location.reload(true);          
         }
         // Od paletki
-        let paddleY = this.cvs.height-paddle.paddleHeight;
-        let distX = Math.abs(ballX - (paddle.paddleX + paddle.paddleWidth/2));
-        let distY = Math.abs(ballY - (paddleY + paddle.paddleHeight/2));
-        if (distX <= paddle.paddleWidth/2 && distY <= paddle.paddleHeight/2 + this.ballRadius){
+        const paddleY = this.cvs.height-paddleHeight;
+        const distX = Math.abs(ballX - (paddleX + paddleWidth/2));
+        const distY = Math.abs(ballY - (paddleY + paddleHeight/2));
+        if (distX <= paddleWidth/2 && distY <= paddleHeight/2 + this.ballRadius){
             dy = -dy;
         }
-        let pitaX = distX - paddle.paddleWidth/2;
-        let pitaY = distY - paddle.paddleHeight/2;
+        const pitaX = distX - paddleWidth/2;
+        const pitaY = distY - paddleHeight/2;
         if (pitaX*pitaX + pitaY*pitaY <= this.ballRadius*this.ballRadius){
             dx = -dx;
             dy = -dy;
