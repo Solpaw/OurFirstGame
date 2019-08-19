@@ -10,7 +10,7 @@ class Bricks {
         this.brickOffsetLeft = 30; // odsunięcie cegiełki od lewej
 
         // dwuwymiarowa tablica, w której przetrzymywane będą cegiełki
-        // kolimna "c" będize zawierać będzie 3 rzędy cegiełek o domyślnej pozycji x i y = 0 
+        // kolumna "c" będzie zawierać 3 rzędy cegiełek o domyślnej pozycji x i y = 0 
         this.bricks = [];
         for(let c=0; c<this.brickColumnCount; c++) {
             this.bricks[c] = [];
@@ -21,16 +21,38 @@ class Bricks {
     }
 
     drawBricks(){
-        // TO DO -> funkcja renderująca cegiełki
-        // hint: korzystajcie z wartości zdefiniowanych w constructorze oraz metod canvas'a
-        // hint: tablica dwuwymiarowa 
+        //funkcja renderująca cegiełki
+        for (let c = 0; c < this.brickColumnCount; c++) {
+            for (let r = 0; r < this.brickRowCount; r++) {
+                if (this.bricks[c][r].status > 0) {
+                    let brickX = (c * (this.brickPadding + this.brickWidth)) + this.brickOffsetLeft;
+                    let brickY = (r * (this.brickPadding + this.brickHeight)) + this.brickOffsetTop;
+                    this.bricks[c][r].x = brickX;
+                    this.bricks[c][r].y = brickY;
+                    this.ctx.rect(brickX, brickY, this.brickWidth, this.brickHeight);
+                }
+            }
+        }
     };
 
     collisionDetection() {
-        // TO DO -> funkcja wykrywająca kolizję piłeczki z cegiełką i usuwająca trafioną cegiełke
-        // hint: jako argumenty funkcja przyjmuje x i y zdefinowane globalnie w index.js
-        // hint: przy trafieniu w cegiełke score++
-        // hint: jeśli skończą się cegiełki -> wygrana, czyli alert oraz przeładowanie dokumentu i wyczesczenie intarwału
-    };
-    
+        // funkcja wykrywająca kolizję piłeczki z cegiełką i usuwająca trafioną cegiełke
+        for(let c=0; c<this.brickColumnCount; c++){
+            for(let r=0; r<this.brickRowCount; r++){
+                let brick = bricks[c][r];
+                if(brick.status > 0) {
+                    if(x > brick.x && x < brick.x + this.brickWidth && y > brick.y && y < brick.y + this.brickHeight){
+                        dy = -dy;
+                        brick.status = 0;
+                        score++;
+                        if (score == this.brickColumnCount * this.brickRowCount) {
+                            alert("You Win!"); // Komunikat o wygranej
+                            clearInterval(interval);  // Wyczyszczenie interwału
+                            document.location.reload(); // Przeładowanie dokumentu
+                        }
+                    }
+                }
+            }
+        }
+    };   
 }
