@@ -25,8 +25,8 @@ class Bricks {
         for (let c = 0; c < this.brickColumnCount; c++) {
             for (let r = 0; r < this.brickRowCount; r++) {
                 if (this.bricks[c][r].status > 0) {
-                    let brickX = (c * (this.brickPadding + this.brickWidth)) + this.brickOffsetLeft;
-                    let brickY = (r * (this.brickPadding + this.brickHeight)) + this.brickOffsetTop;
+                    const brickX = (c * (this.brickPadding + this.brickWidth)) + this.brickOffsetLeft;
+                    const brickY = (r * (this.brickPadding + this.brickHeight)) + this.brickOffsetTop;
                     this.bricks[c][r].x = brickX;
                     this.bricks[c][r].y = brickY;
                     this.ctx.rect(brickX, brickY, this.brickWidth, this.brickHeight);
@@ -39,7 +39,7 @@ class Bricks {
         // funkcja wykrywająca kolizję piłeczki z cegiełką i usuwająca trafioną cegiełke
         for(let c=0; c<this.brickColumnCount; c++){
             for(let r=0; r<this.brickRowCount; r++){
-                let brick = bricks[c][r];
+                const brick = bricks[c][r];
                 if(brick.status > 0) {
                     if(x > brick.x && x < brick.x + this.brickWidth && y > brick.y && y < brick.y + this.brickHeight){
                         dy = -dy;
