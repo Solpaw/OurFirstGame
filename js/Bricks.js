@@ -29,6 +29,8 @@ class Bricks {
                     const brickY = (r * (this.brickPadding + this.brickHeight)) + this.brickOffsetTop;
                     this.bricks[c][r].x = brickX;
                     this.bricks[c][r].y = brickY;
+
+                    this.ctx.fillStyle = '#DA674E';
                     this.ctx.fillRect(brickX, brickY, this.brickWidth, this.brickHeight);
                 }
             }
