@@ -30,6 +30,8 @@ const start = () => {
     paddle.movePaddle();    // przesunięcie Paddle
     ball.bouncing(x, y, paddle); // odbicia piłki od Paddle i ścian, koniec gry
     moveBall(); // przesuwanie piłeczki
+    bricks.drawBricks(); // rysowanie cegiełek
+    bricks.collisionDetection(); // odbicie od cegiełek
     // umieszczenie zmiennej score w spanie, w nagówku h1 o id "score", tego jeszcze nie było, więc nie musice nic tu zmieniać
     document.querySelector("#score span").innerText = score;
 };
