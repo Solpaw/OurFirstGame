@@ -9,10 +9,21 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
 }
         
 canvas { 
-    background: #eee; 
+    background: rgba(221, 220, 220); 
     display: block; 
     margin: 0 auto; 
+}
+
+h1 {
+    padding: 10px;
+    box-sizing: border-box;
+    width: 480px;
+    background-color: rgba(71, 41, 41);
+    color: rgb(206, 200, 200);
+    text-align: center;
 }

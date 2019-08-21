@@ -30,6 +30,7 @@ class Bricks {
                     this.bricks[c][r].x = brickX;
                     this.bricks[c][r].y = brickY;
                     this.ctx.rect(brickX, brickY, this.brickWidth, this.brickHeight);
+                    this.ctx.fillStyle = '#DA674E';
                 }
             }
         }
